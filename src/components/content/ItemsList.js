@@ -6,10 +6,13 @@ export default class ItemsList extends Component {
     super();
     this.state = {
       products: [],
-      loadingProducts: true
+      loadingProducts: true,
+      showList: true,
+      swowDetails: false,
+      productIdToShow: 0
     };
 
-    //this.getDetails = this.getDetails.bind(this);
+    this.getDetails = this.getDetails.bind(this);
     //this.renderProductsTable = this.renderProductsTable.bind(this);
 
     fetch(API_URL + "/products")
@@ -20,6 +23,15 @@ export default class ItemsList extends Component {
           loadingProducts: false
         });
       });
+  }
+
+  getDetails(event) {
+    event.preventDefault();
+    this.setState({
+      showList: false,
+      swowDetails: true
+    });
+    //alert("productId");
   }
 
   renderProductsTable(products) {
@@ -45,7 +57,7 @@ export default class ItemsList extends Component {
                 <td>{product.Name}</td>
                 <td>{product.Price}</td>
                 <td>
-                  <button>Details</button>
+                  <button onClick={this.getDetails}>Details</button>
                 </td>
               </tr>
             ))}
@@ -56,16 +68,18 @@ export default class ItemsList extends Component {
   }
 
   render() {
-    let content = this.state.loadingProducts ? (
-      <p>...Loading</p>
-    ) : (
-      this.renderProductsTable(this.state.products)
-    );
-    return (
-      <div>
-        <h1>List of products</h1>
-        {content}
-      </div>
-    );
+    if (this.state.showList == true) {
+      let content = this.state.loadingProducts ? (
+        <p>...Loading</p>
+      ) : (
+        this.renderProductsTable(this.state.products)
+      );
+      return (
+        <div>
+          <h1>List of products</h1>
+          {content}
+        </div>
+      );
+    } else return "";
   }
 }
