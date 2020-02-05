@@ -6,6 +6,7 @@ export default class ItemsList extends Component {
     super();
     this.state = {
       products: [],
+      product: {},
       loadingProducts: true,
       showList: true,
       swowDetails: false,
@@ -13,7 +14,7 @@ export default class ItemsList extends Component {
     };
 
     this.getDetails = this.getDetails.bind(this);
-    //this.renderProductsTable = this.renderProductsTable.bind(this);
+    this.getList = this.getList.bind(this);
 
     fetch(API_URL + "/products")
       .then(response => response.json())
@@ -25,13 +26,21 @@ export default class ItemsList extends Component {
       });
   }
 
-  getDetails(event) {
-    event.preventDefault();
+  getDetails(productId) {
     this.setState({
       showList: false,
       swowDetails: true
     });
-    //alert("productId");
+    var product = this.state.products.find(p => p.ProductId === productId);
+    //console.log(product);
+    this.setState({ product: product });
+  }
+
+  getList() {
+    this.setState({
+      showList: true,
+      swowDetails: false
+    });
   }
 
   renderProductsTable(products) {
@@ -44,42 +53,68 @@ export default class ItemsList extends Component {
       );
     } else {
       return (
-        <table className="table table-sm table-striped">
-          <thead>
-            <tr>
-              <th>Product Name</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map(product => (
-              <tr key={product.productId + product.Name}>
-                <td>{product.Name}</td>
-                <td>{product.Price}</td>
-                <td>
-                  <button onClick={this.getDetails}>Details</button>
-                </td>
+        <div>
+          <h2>List of products</h2>
+          <table className="table table-sm table-striped">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Manufacturer</th>
+                <th>Price ($)</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {products.map(product => (
+                <tr key={product.productId + product.Name}>
+                  <td>{product.Name}</td>
+                  <td>{product.Manufacturer}</td>
+                  <td>{product.Price}</td>
+                  <td>
+                    <button onClick={() => this.getDetails(product.ProductId)}>
+                      Details
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       );
     }
   }
 
+  renderProductDetails() {
+    return (
+      <div>
+        <button
+          onClick={() => {
+            this.getList();
+          }}
+        >
+          BACK TO LIST
+        </button>
+        <h2>Type of product:{this.state.product.Name}</h2>
+
+        <p>Manufacturer: {this.state.product.Manufacturer}</p>
+
+        <p>Description: {this.state.product.Description}</p>
+
+        <p>
+          <img src={this.state.product.PictureURL}></img>
+        </p>
+      </div>
+    );
+  }
+
   render() {
-    if (this.state.showList == true) {
+    if (this.state.showList === true && this.state.swowDetails === false) {
       let content = this.state.loadingProducts ? (
         <p>...Loading</p>
       ) : (
         this.renderProductsTable(this.state.products)
       );
-      return (
-        <div>
-          <h1>List of products</h1>
-          {content}
-        </div>
-      );
-    } else return "";
+      return <div>{content}</div>;
+    } else if (this.state.swowDetails === true && this.state.showList === false)
+      return this.renderProductDetails(this.state.product);
   }
 }
