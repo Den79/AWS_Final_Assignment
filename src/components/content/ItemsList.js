@@ -54,7 +54,6 @@ export default class ItemsList extends Component {
     } else {
       return (
         <div>
-          <h2>List of products</h2>
           <table className="table table-sm table-striped">
             <thead>
               <tr>
@@ -94,11 +93,12 @@ export default class ItemsList extends Component {
           BACK TO LIST
         </button>
         <h2>Type of product:{this.state.product.Name}</h2>
-
         <p>Manufacturer: {this.state.product.Manufacturer}</p>
-
+        <p>Model: {this.state.product.Model}</p>
+        <p>
+          Price: {this.state.product.Price} {" $"}
+        </p>
         <p>Description: {this.state.product.Description}</p>
-
         <p>
           <img src={this.state.product.PictureURL}></img>
         </p>
@@ -113,8 +113,18 @@ export default class ItemsList extends Component {
       ) : (
         this.renderProductsTable(this.state.products)
       );
-      return <div>{content}</div>;
+      return (
+        <div>
+          <h1>List of products</h1>
+          {content}
+        </div>
+      );
     } else if (this.state.swowDetails === true && this.state.showList === false)
-      return this.renderProductDetails(this.state.product);
+      return (
+        <div>
+          <h1>Details</h1>
+          {this.renderProductDetails(this.state.product)}
+        </div>
+      );
   }
 }

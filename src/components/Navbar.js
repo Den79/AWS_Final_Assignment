@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import {Auth} from 'aws-amplify';
+import React, { Component } from "react";
+import { Auth } from "aws-amplify";
 
 export default class Navbar extends Component {
-
   //handle the logout button click event
   logOutHandler = async event => {
     //prevent page refresh
@@ -12,10 +11,10 @@ export default class Navbar extends Component {
       Auth.signOut();
       this.props.auth.authenticateUser(false);
       this.props.auth.setAuthUser(null);
-    } catch(error){
+    } catch (error) {
       console.log(error.message);
     }
-  }
+  };
 
   render() {
     return (
@@ -29,7 +28,7 @@ export default class Navbar extends Component {
           <div className="navbar-end">
             <div className="navbar-item">
               {this.props.auth.isAuth && this.props.auth.user && (
-              <p>Hello {this.props.auth.user.username}</p>
+                <p>Hello {this.props.auth.user.username}</p>
               )}
               {!this.props.auth.isAuth && (
                 <div className="auth-buttons">
@@ -46,8 +45,12 @@ export default class Navbar extends Component {
                   {/* <a href="/changepassword" className="button is-light">
                   Change Password
                   </a> */}
-                  <a href="/" onClick={this.logOutHandler} className="button is-light">
-                  Log out
+                  <a
+                    href="/"
+                    onClick={this.logOutHandler}
+                    className="button is-light"
+                  >
+                    Log out
                   </a>
                 </div>
               )}
@@ -55,6 +58,6 @@ export default class Navbar extends Component {
           </div>
         </div>
       </nav>
-    )
+    );
   }
 }
