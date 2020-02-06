@@ -1,4 +1,7 @@
-.navbar, .navbar-end, .navbar-menu, .navbar-start {
+.navbar,
+.navbar-end,
+.navbar-menu,
+.navbar-start {
   align-items: stretch !important;
   display: flex !important;
 }
@@ -25,4 +28,8 @@
 
 h1 {
   font-size: 2em;
+}
+
+.center {
+  text-align: center;
 }

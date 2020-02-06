@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Register from "./components/auth/Register";
 import Welcome from "./components/auth/Welcome";
 import LogIn from "./components/auth/LogIn";
+import Logout from "./components/auth/Logout";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import ForgotPasswordSubmit from "./components/auth/ForgotPasswordSubmit";
 import ChangePasswordConfirmation from "./components/auth/ChangePasswordConfirmation";
@@ -77,6 +78,11 @@ class App extends Component {
                   exact
                   path="/login"
                   render={props => <LogIn {...props} auth={authProps} />}
+                />
+                <Route
+                  exact
+                  path="/logout"
+                  render={props => <Logout {...props} auth={authProps} />}
                 />
                 <Route
                   exact
