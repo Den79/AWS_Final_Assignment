@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 const API_URL = "https://xijx2gs4ng.execute-api.us-east-1.amazonaws.com/prod";
 export default class ItemsList extends Component {
@@ -41,6 +42,7 @@ export default class ItemsList extends Component {
       showList: true,
       swowDetails: false
     });
+    //alert(this.props.auth.isAuth);
   }
 
   renderProductsTable(products) {
@@ -107,24 +109,30 @@ export default class ItemsList extends Component {
   }
 
   render() {
-    if (this.state.showList === true && this.state.swowDetails === false) {
-      let content = this.state.loadingProducts ? (
-        <p>...Loading</p>
-      ) : (
-        this.renderProductsTable(this.state.products)
-      );
-      return (
-        <div>
-          <h1>List of products</h1>
-          {content}
-        </div>
-      );
-    } else if (this.state.swowDetails === true && this.state.showList === false)
-      return (
-        <div>
-          <h1>Details</h1>
-          {this.renderProductDetails(this.state.product)}
-        </div>
-      );
+    // check if logged in if not return nothing
+    if (this.props.auth.isAuth == true) {
+      if (this.state.showList === true && this.state.swowDetails === false) {
+        let content = this.state.loadingProducts ? (
+          <p>...Loading</p>
+        ) : (
+          this.renderProductsTable(this.state.products)
+        );
+        return (
+          <div>
+            <h1>List of products</h1>
+            {content}
+          </div>
+        );
+      } else if (
+        this.state.swowDetails === true &&
+        this.state.showList === false
+      )
+        return (
+          <div>
+            <h1>Details</h1>
+            {this.renderProductDetails(this.state.product)}
+          </div>
+        );
+    } else return "";
   }
 }
