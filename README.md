@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Technology used
+### React
+### Amazon Web Services:
+- [DynamoDb](https://aws.amazon.com/dynamodb/)
+- [API Gateway](https://aws.amazon.com/api-gateway/)
+- [Lambda](https://aws.amazon.com/lambda/)
+- [Cognito](https://aws.amazon.com/cognito)
+- [S3](https://aws.amazon.com/s3/)
+
 ## Available Scripts
 
 In the project directory, you can run:
