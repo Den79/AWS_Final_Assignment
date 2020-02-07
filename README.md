@@ -7,7 +7,7 @@ This is the Amazon Web Services training project: Registration/Login form.
 •	Login and Logout\
 • Forgot password\
 •	Item List\
-•	Item Detail\
+•	Item Detail
 
 ### Authentication
 •	Uses Cognito Identity Service for user registration, authentication, "forgot password".\
@@ -16,7 +16,7 @@ This is the Amazon Web Services training project: Registration/Login form.
 ### Data Storage and Retrieval
 •	All Items uses a Lambda Function from an AWS datastore.\
 •	Items include description and image.\
-•	Images stores in an AWS S3 bucket and only the URL saved to the database.\
+•	Images stores in an AWS S3 bucket and only the URL saved to the database.
 
 ## Technology used
 ### React
@@ -25,7 +25,7 @@ This is the Amazon Web Services training project: Registration/Login form.
 • [API Gateway](https://aws.amazon.com/api-gateway/)\
 • [Lambda](https://aws.amazon.com/lambda/)\
 • [Cognito](https://aws.amazon.com/cognito)\
-• [S3](https://aws.amazon.com/s3/)\
+• [S3](https://aws.amazon.com/s3/)
 
 ## Available Scripts
 
