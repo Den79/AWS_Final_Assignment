@@ -3,29 +3,29 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This is the Amazon Web Services training project: Registration/Login form.
 
 ### Features:
-•	Registration with email confirmation
-•	Login and Logout
-• Forgot password
-•	Item List
-•	Item Detail
+•	Registration with email confirmation\
+•	Login and Logout\
+• Forgot password\
+•	Item List\
+•	Item Detail\
 
 ### Authentication
-•	Uses Cognito Identity Service for user registration, authentication, "forgot password".
-•	When a user is authenticated, they can view an “Items” page, with products from database, photos from 3d bucket (AWS)
+•	Uses Cognito Identity Service for user registration, authentication, "forgot password".\
+•	When a user is authenticated, they can view an “Items” page, with products from database, photos from 3d bucket (AWS)\
 
 ### Data Storage and Retrieval
-•	All Items uses a Lambda Function from an AWS datastore.
-•	Items include description and image.
-•	Images stores in an AWS S3 bucket and only the URL saved to the database.
+•	All Items uses a Lambda Function from an AWS datastore.\
+•	Items include description and image.\
+•	Images stores in an AWS S3 bucket and only the URL saved to the database.\
 
 ## Technology used
 ### React
 ### Amazon Web Services:
-• [DynamoDb](https://aws.amazon.com/dynamodb/)
-• [API Gateway](https://aws.amazon.com/api-gateway/)
-• [Lambda](https://aws.amazon.com/lambda/)
-• [Cognito](https://aws.amazon.com/cognito)
-• [S3](https://aws.amazon.com/s3/)
+• [DynamoDb](https://aws.amazon.com/dynamodb/)\
+• [API Gateway](https://aws.amazon.com/api-gateway/)\
+• [Lambda](https://aws.amazon.com/lambda/)\
+• [Cognito](https://aws.amazon.com/cognito)\
+• [S3](https://aws.amazon.com/s3/)\
 
 ## Available Scripts
 
