@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 
 const API_URL = "https://xijx2gs4ng.execute-api.us-east-1.amazonaws.com/prod";
 export default class ItemsList extends Component {
@@ -33,7 +32,6 @@ export default class ItemsList extends Component {
       swowDetails: true
     });
     var product = this.state.products.find(p => p.ProductId === productId);
-    //console.log(product);
     this.setState({ product: product });
   }
 
@@ -42,7 +40,6 @@ export default class ItemsList extends Component {
       showList: true,
       swowDetails: false
     });
-    //alert(this.props.auth.isAuth);
   }
 
   renderProductsTable(products) {
@@ -71,7 +68,10 @@ export default class ItemsList extends Component {
                   <td>{product.Manufacturer}</td>
                   <td>{product.Price}</td>
                   <td>
-                    <button onClick={() => this.getDetails(product.ProductId)}>
+                    <button
+                      className="btm-sm button is-light"
+                      onClick={() => this.getDetails(product.ProductId)}
+                    >
                       Details
                     </button>
                   </td>
@@ -86,8 +86,9 @@ export default class ItemsList extends Component {
 
   renderProductDetails() {
     return (
-      <div>
+      <div className="productList">
         <button
+          className="btm-sm button is-primary"
           onClick={() => {
             this.getList();
           }}
