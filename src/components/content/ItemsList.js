@@ -52,7 +52,7 @@ export default class ItemsList extends Component {
       );
     } else {
       return (
-        <div>
+        <div className="productList">
           <table className="table table-sm table-striped">
             <thead>
               <tr>
@@ -95,16 +95,26 @@ export default class ItemsList extends Component {
         >
           BACK TO LIST
         </button>
-        <h2>Type of product:{this.state.product.Name}</h2>
-        <p>Manufacturer: {this.state.product.Manufacturer}</p>
-        <p>Model: {this.state.product.Model}</p>
-        <p>
-          Price: {this.state.product.Price} {" $"}
-        </p>
-        <p>Description: {this.state.product.Description}</p>
-        <p>
-          <img src={this.state.product.PictureURL}></img>
-        </p>
+        <br />
+        <div className="card">
+          <img
+            className="card-img-top center"
+            src={this.state.product.PictureURL}
+          ></img>
+          <div className="card-body">
+            <h2 className="card-title">{this.state.product.Name}</h2>
+            <p className="card-text">
+              Manufacturer: {this.state.product.Manufacturer}
+            </p>
+            <p className="card-text">Model: {this.state.product.Model}</p>
+            <p className="card-text">
+              Price: {this.state.product.Price} {" $"}
+            </p>
+            <p className="card-text">
+              Description: {this.state.product.Description}
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
@@ -119,8 +129,9 @@ export default class ItemsList extends Component {
           this.renderProductsTable(this.state.products)
         );
         return (
-          <div>
+          <div className="center">
             <h1>List of products</h1>
+            <br />
             {content}
           </div>
         );
@@ -130,7 +141,7 @@ export default class ItemsList extends Component {
       )
         return (
           <div>
-            <h1>Details</h1>
+            <h1 className="center">Details</h1>
             {this.renderProductDetails(this.state.product)}
           </div>
         );
